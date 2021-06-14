@@ -18,7 +18,8 @@ function formatSearchResponse(response) {
                 },
                 picture: product.thumbnail,
                 condition: product.condition,
-                free_shipping: product.shipping.free_shipping
+                free_shipping: product.shipping.free_shipping,
+                location: product.address.state_name
             })
         }
         if (!(categoriesToSave.includes(product.category_id))) {
@@ -29,6 +30,7 @@ function formatSearchResponse(response) {
 
     const mostFrequentCategory = getMostFrequent(categoriesToSave)
 
+    console.log(itemsToSave)
     return {
         author: {
             name: usuario.firm.name,
