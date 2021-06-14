@@ -16,7 +16,11 @@ async function getItemsByQueryParams(query) {
             url: `https://api.mercadolibre.com/categories/${formatedObject.categories}`,
             method: 'get'
         }).then((arrawCategories) => {
-            formatedObject.categories = arrawCategories.data.path_from_root
+            const arrayToSave = []
+            arrawCategories.data.path_from_root.forEach((element)=>{
+                arrayToSave.push(element.name)
+            })
+            formatedObject.categories = arrayToSave
         })
 
         return {
